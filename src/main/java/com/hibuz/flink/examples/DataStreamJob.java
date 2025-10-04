@@ -18,6 +18,7 @@
 
 package com.hibuz.flink.examples;
 
+import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
@@ -39,27 +40,17 @@ public class DataStreamJob {
 		// to building Flink applications.
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		/*
-		 * Here, you can start creating your execution plan for Flink.
-		 *
-		 * Start with getting some data from the environment, like
-		 * 	env.fromSequence(1, 10);
-		 *
-		 * then, transform the resulting DataStream<Long> using operations
-		 * like
-		 * 	.filter()
-		 * 	.flatMap()
-		 * 	.window()
-		 * 	.process()
-		 *
-		 * and many more.
-		 * Have a look at the programming guide:
-		 *
-		 * https://nightlies.apache.org/flink/flink-docs-stable/
-		 *
-		 */
 
-		// Execute program, beginning computation.
-		env.execute("Flink Java API Skeleton");
+        // 1. 데이터 소스 정의 (예: 스트림 데이터 소스)
+        DataStream<String> dataStream = env.fromData("apple", "banana", "orange");
+
+        // 2. 데이터 변환 정의 (예: 대문자 변환)
+        DataStream<String> upperCaseStream = dataStream.map(String::toUpperCase);
+
+        // 3. 데이터 싱크 정의 (예: 결과를 콘솔에 출력)
+        upperCaseStream.print();
+
+        // Flink 작업을 실행합니다.
+        env.execute("My Streaming Job");
 	}
 }

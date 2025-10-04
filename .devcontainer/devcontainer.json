@@ -11,8 +11,7 @@
       "vscode": {
         "extensions": [
           "vscjava.vscode-java-pack",
-          "eamodio.gitlens",
-          "SonarSource.sonarlint-vscode"
+          "eamodio.gitlens"
         ]
       }
     }
