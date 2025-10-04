@@ -10,22 +10,10 @@
     "customizations": {
       "vscode": {
         "extensions": [
-          "mhutchie.git-graph",
-          "seatonjiang.gitmoji-vscode",
+          "vscjava.vscode-java-pack",
+          "eamodio.gitlens",
           "SonarSource.sonarlint-vscode"
         ]
       }
-    },
-    "forwardPorts": [
-        8080,
-        9870,
-        8088,
-        19888,
-        16010,
-        8090,
-        8091,
-        18080,
-        10002,
-        8081
-    ]
+    }
 }
