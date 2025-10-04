@@ -1,0 +1,31 @@
+{
+    "name": "Java",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "flink-dev",
+    "workspaceFolder": "/home/hadoop/flink-example",
+    "features": {
+      "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "postCreateCommand": "java -version",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "mhutchie.git-graph",
+          "seatonjiang.gitmoji-vscode",
+          "SonarSource.sonarlint-vscode"
+        ]
+      }
+    },
+    "forwardPorts": [
+        8080,
+        9870,
+        8088,
+        19888,
+        16010,
+        8090,
+        8091,
+        18080,
+        10002,
+        8081
+    ]
+}
