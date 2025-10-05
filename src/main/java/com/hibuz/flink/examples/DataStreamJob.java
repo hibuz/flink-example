@@ -40,7 +40,6 @@ public class DataStreamJob {
 		// to building Flink applications.
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-
         // 1. 데이터 소스 정의 (예: 스트림 데이터 소스)
         DataStream<String> dataStream = env.fromData("apple", "banana", "orange");
 

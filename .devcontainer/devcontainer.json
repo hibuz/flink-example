@@ -12,7 +12,10 @@
         "extensions": [
           "vscjava.vscode-java-pack",
           "eamodio.gitlens"
-        ]
+        ],
+        "settings": {
+          "locale": "en"
+        }
       }
     }
 }
