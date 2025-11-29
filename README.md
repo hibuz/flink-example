@@ -14,7 +14,7 @@ Afterwards, you'll find the jar to use in the 'build/libs' folder.
 
 To run in cluster mode
 ```bash
-flink run build
+flink run build/libs/*-all.jar
 ```
 
 Visit dashboard

@@ -7,7 +7,7 @@ plugins {
 
 ext {
     javaVersion = '21'
-    flinkVersion = '2.1.0'
+    flinkVersion = '2.1.1'
     scalaBinaryVersion = '2.12'
     slf4jVersion = '1.7.36'
     log4jVersion = '2.17.1'
@@ -17,12 +17,8 @@ ext {
 // artifact properties
 group = 'com.hibuz.flink.examples'
 version = '0.1-SNAPSHOT'
-if (flinkVersionNew) {
-    mainClassName = 'com.hibuz.flink.examples.DataStreamJob'
-} else {
-    mainClassName = 'com.hibuz.flink.examples.StreamingJob'
-}
-description = """Flink Quickstart Job"""
+mainClassName = 'com.hibuz.flink.examples.fds.FraudDetectionJob'
+description = """Fraud Detection with the DataStream API"""
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
@@ -66,6 +62,7 @@ dependencies {
     if (flinkVersionNew) {
         implementation "org.apache.flink:flink-streaming-java:${flinkVersion}"
         implementation "org.apache.flink:flink-clients:${flinkVersion}"
+        implementation "org.apache.flink:flink-walkthrough-common:${flinkVersion}"
     } else {
         implementation "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkVersion}"
         implementation "org.apache.flink:flink-clients_${scalaBinaryVersion}:${flinkVersion}"
@@ -76,6 +73,7 @@ dependencies {
     // connectors. These must be in the flinkShadowJar configuration!
     // --------------------------------------------------------------
     flinkShadowJar "org.apache.flink:flink-connector-kafka:4.0.1-2.0"
+    flinkShadowJar "org.apache.flink:flink-walkthrough-common:${flinkVersion}"
     
 
     runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
