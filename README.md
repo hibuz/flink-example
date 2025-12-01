@@ -17,7 +17,7 @@ To run in cluster mode
 flink run build/libs/*-all.jar
 ```
 
-Visit dashboard
+Visit dashboard : http://localhost:8081
 ![Flink Dashboard](.assets/image.png)
 
 ### References
