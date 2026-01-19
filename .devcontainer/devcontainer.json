@@ -3,10 +3,13 @@
     "dockerComposeFile": "../docker-compose.yml",
     "service": "flink-dev",
     "workspaceFolder": "/home/hadoop/flink-example",
+    "remoteEnv": {
+      "DOCKER_API_VERSION": "1.43"
+    },
     "features": {
       "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
     },
-    "postCreateCommand": "java -version",
+    "postCreateCommand": "git clone https://github.com/hibuz/kafka-all-in-one.git /workspaces/kafka-all-in-one",
     "customizations": {
       "vscode": {
         "extensions": [
@@ -17,9 +20,6 @@
           "locale": "en"
         }
       }
-    },
-    "remoteEnv": {
-      "DOCKER_API_VERSION": "1.43"
     },
     "forwardPorts": [
         9870,

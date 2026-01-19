@@ -33,12 +33,8 @@ Ingest data from an OLTP MySQL database using the Flink CDC connector, process i
 
 ### Prerequisites
 ```bash
-# Clone the repository
-git clone https://github.com/hibuz/kafka-all-in-one.git
-
 # Start mysql service
-cd kafka-all-in-one
-docker compose up mysql -d
+docker compose -f /workspaces/kafka-all-in-one/docker-compose.yml up mysql -d
 
 # Verify all services are running
 docker exec mysql mysql -umyuser -pmyuser_pw123! -Dmysqldb -e "select * from products;"
