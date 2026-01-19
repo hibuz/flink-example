@@ -1,7 +1,10 @@
-# A Flink application project using Java and Gradle.
+# Apache Flink Usecases on modern data lakehouse
+This repository contains examples of using Apache Flink and Apache Iceberg for real-time data processing and analytics on modern data lakehouse architectures.
 
+## 🛡️ Flink example: Fraud Detection
+Demonstrates a simple fraud detection application using Apache Flink. The application reads a stream of transactions, identifies potentially fraudulent activities based on predefined criteria, and outputs alerts for further investigation.
 
-## Building and running
+### Building and running
 To run and test your application with an embedded instance of Flink
 ```bash
 ./gradlew run
@@ -25,8 +28,29 @@ To run in cluster mode
 flink run build/libs/*-all.jar
 ```
 
-Visit dashboard : http://localhost:8081
+## 🔗 Real-time Data Pipeline
+Ingest data from an OLTP MySQL database using the Flink CDC connector, process it in real time with Flink Streaming, and store the results in an Apache Iceberg open table format lakehouse on S3-compatible MinIO object storage.
+
+### Prerequisites
+```bash
+# Clone the repository
+git clone https://github.com/hibuz/kafka-all-in-one.git
+
+# Start mysql service
+cd kafka-all-in-one
+docker compose up mysql -d
+
+# Verify all services are running
+docker exec mysql mysql -umyuser -pmyuser_pw123! -Dmysqldb -e "select * from products;"
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id      sku     name    description     weight  price   create_at
+1       P-001   scooter Small 2-wheel scooter   3.14    10.224  2026-01-19 18:02:24
+2       P-002   car battery     12V car battery 8.1     11.224  2026-01-19 18:02:24
+...
+```
+
+## Visit dashboard : http://localhost:8081
 ![Flink Dashboard](.assets/image.png)
 
-### References
+## References
 - https://nightlies.apache.org/flink/flink-docs-stable/
