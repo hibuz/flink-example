@@ -1,9 +1,27 @@
 services:
 
   flink-dev:
-    extends:
-      file: .devcontainer/docker-compose.yml
-      service: flink-dev
+    container_name: flink
+    image: hibuz/flink-dev:simple
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+    ports:
+      - 9870:9870
+      - 8088:8088
+      - 19888:19888
+      - 16010:16010
+      - 4040:4040
+      - 8090:8090
+      - 8091:8091
+      - 18080:18080
+      - 10002:10002
+      - 8081:8081
+    command: #hive,spark,hbase,yarn,historyserver
+    volumes:
+      - flink-vol:/tmp
+      - .:/home/hadoop/flink-example:cached
 
   minio:
     image: quay.io/minio/minio:latest
@@ -59,3 +77,8 @@ services:
 volumes:
   flink-vol: {}
   minio-vol: {}
+
+networks:
+  default:
+    driver: bridge
+    name: hibuz-net

@@ -1,6 +1,6 @@
 {
     "name": "Java",
-    "dockerComposeFile": "docker-compose.yml",
+    "dockerComposeFile": "../docker-compose.yml",
     "service": "flink-dev",
     "workspaceFolder": "/home/hadoop/flink-example",
     "features": {
