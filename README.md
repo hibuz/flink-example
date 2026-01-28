@@ -33,9 +33,6 @@ Ingest data from an OLTP MySQL database using the Flink CDC connector, process i
 
 ### Prerequisites
 ```bash
-# Start mysql service
-docker compose -f /workspaces/kafka-all-in-one/docker-compose.yml up mysql -d
-
 # Verify all services are running
 docker exec mysql mysql -umyuser -pmyuser_pw123! -Dmysqldb -e "select * from products;"
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -43,6 +40,15 @@ id      sku     name    description     weight  price   create_at
 1       P-001   scooter Small 2-wheel scooter   3.14    10.224  2026-01-19 18:02:24
 2       P-002   car battery     12V car battery 8.1     11.224  2026-01-19 18:02:24
 ...
+```
+### Running the Flink Job
+```bash
+# Connect to Flink SQL Client
+~/flink-example$ sql-client.sh
+
+Flink SQL> execute 'jobs/job.sql';
+
+docker exec mysql mysql -umyuser -pmyuser_pw123! -Dmysqldb -e "insert into products (sku, name, description, weight, price, create_at) values ('P-010', 'new product', 'new product description', 5.0, 15.99, now());"
 ```
 
 ## Visit dashboard : http://localhost:8081

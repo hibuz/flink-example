@@ -9,7 +9,7 @@
     "features": {
       "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
     },
-    "postCreateCommand": "git clone https://github.com/hibuz/kafka-all-in-one.git /workspaces/kafka-all-in-one",
+    "initializeCommand": "if [ ! -d \"../kafka-all-in-one\" ]; then git clone https://github.com/hibuz/kafka-all-in-one.git ../kafka-all-in-one; fi",
     "customizations": {
       "vscode": {
         "extensions": [
